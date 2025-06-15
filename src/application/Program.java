@@ -7,6 +7,7 @@ import model.entities.Consulta;
 import model.entities.Medicacao;
 import model.entities.Medicamento;
 import model.entities.Pet;
+import model.entities.Prontuario;
 import model.entities.Tutor;
 import model.entities.Veterinario;
 
@@ -25,7 +26,9 @@ public class Program {
 		
 		Medicacao  mdc = new Medicacao(2,"Anti-inflamatorio por 10 dias, 1x ao dia",med,con);
 		
-		System.out.println(mdc);
+		Prontuario pro = new Prontuario(1,con,"Animal apresentou coceira e vermelhidao no ouvido direito","Limpeza do ouvido, aplicacao de medicamento topico", "Exame otoscopico","Melhora apos 7 dias");
+		
+		System.out.println(pro);
 
 	}
 
