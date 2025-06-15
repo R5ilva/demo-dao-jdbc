@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 import model.entities.Consulta;
+import model.entities.Medicacao;
 import model.entities.Medicamento;
 import model.entities.Pet;
 import model.entities.Tutor;
@@ -21,7 +22,10 @@ public class Program {
 		Medicamento med = new Medicamento(1, "Antibiotico");
 		
 		Consulta con = new Consulta(2, LocalDate.of(2025, 6, 14), LocalTime.of(14, 00), "Infeccao de ouvido", pet, vet);
-		System.out.println(con);
+		
+		Medicacao  mdc = new Medicacao(2,"Anti-inflamatorio por 10 dias, 1x ao dia",med,con);
+		
+		System.out.println(mdc);
 
 	}
 
