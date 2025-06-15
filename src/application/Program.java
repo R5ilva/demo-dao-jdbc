@@ -1,7 +1,9 @@
 package application;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
+import model.entities.Consulta;
 import model.entities.Medicamento;
 import model.entities.Pet;
 import model.entities.Tutor;
@@ -17,7 +19,9 @@ public class Program {
 		Veterinario vet = new Veterinario(2,"Pedro","CRM12354","Cirurgiao");
 		
 		Medicamento med = new Medicamento(1, "Antibiotico");
-		System.out.println(med);
+		
+		Consulta con = new Consulta(2, LocalDate.of(2025, 6, 14), LocalTime.of(14, 00), "Infeccao de ouvido", pet, vet);
+		System.out.println(con);
 
 	}
 
