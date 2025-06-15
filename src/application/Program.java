@@ -3,6 +3,8 @@ package application;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import model.builder.ConsultaBuilder;
+import model.builder.DiretorConsulta;
 import model.entities.Consulta;
 import model.entities.Medicacao;
 import model.entities.Medicamento;
@@ -28,7 +30,13 @@ public class Program {
 		
 		Prontuario pro = new Prontuario(1,con,"Animal apresentou coceira e vermelhidao no ouvido direito","Limpeza do ouvido, aplicacao de medicamento topico", "Exame otoscopico","Melhora apos 7 dias");
 		
-		System.out.println(pro);
+		ConsultaBuilder cnb = new ConsultaBuilder();
+		DiretorConsulta dca = new DiretorConsulta(cnb);
+		dca.buildConsulta(2, LocalDate.of(2025, 6, 14), LocalTime.of(16, 50), "Teste Build", pet, vet);
+		
+		con = cnb.buildConsulta();
+		
+		System.out.println(con.toString());
 
 	}
 
