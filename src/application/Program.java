@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import model.entities.Pet;
 import model.entities.Tutor;
+import model.entities.Veterinario;
 
 public class Program {
 
@@ -12,7 +13,8 @@ public class Program {
 		
 		Pet pet = new Pet(2, "Preto","Gato","Macho",1,obj);
 		
-		System.out.println(pet);
+		Veterinario vet = new Veterinario(2,"Pedro","CRM12354","Cirurgiao");
+		System.out.println(vet);
 
 	}
 
