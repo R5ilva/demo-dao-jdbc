@@ -1,8 +1,8 @@
-package model.entities;
+package model.entity;
 
 import java.util.Objects;
 
-public class Veterinario {
+public class Veterinario extends EntidadeDominio {
 	private Integer id;
 	private String nome;
 	private String crm;

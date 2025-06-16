@@ -5,13 +5,19 @@ import java.time.LocalTime;
 
 import model.builder.ConsultaBuilder;
 import model.builder.DiretorConsulta;
-import model.entities.Consulta;
-import model.entities.Medicacao;
-import model.entities.Medicamento;
-import model.entities.Pet;
-import model.entities.Prontuario;
-import model.entities.Tutor;
-import model.entities.Veterinario;
+import model.builder.DiretorProntuario;
+import model.builder.ProntuarioBuilder;
+import model.dao.DaoFactory;
+import model.dao.IDao;
+import model.dao.TutorDaoJDBC;
+import model.entity.Consulta;
+import model.entity.EntidadeDominio;
+import model.entity.Medicacao;
+import model.entity.Medicamento;
+import model.entity.Pet;
+import model.entity.Prontuario;
+import model.entity.Tutor;
+import model.entity.Veterinario;
 
 public class Program {
 
@@ -36,7 +42,18 @@ public class Program {
 		
 		con = cnb.buildConsulta();
 		
-		System.out.println(con.toString());
+		ProntuarioBuilder construtorProntuario = new ProntuarioBuilder();
+		DiretorProntuario diretorProntuario = new DiretorProntuario(construtorProntuario);
+		diretorProntuario.buildProntuario(2, con, "Teste Obs", "Teste Proc", "Teste Exam", "Teste Evo");
+		
+		pro = construtorProntuario.buildProntuario();
+		
+		IDao petDao = DaoFactory.createPetDao();
+		
+		IDao tutorDao = DaoFactory.createTutorDao();
+		EntidadeDominio tutor =  tutorDao.findById(2);
+		
+		System.out.println(tutor);
 
 	}
 

@@ -1,8 +1,8 @@
-package model.entities;
+package model.entity;
 
 import java.util.Objects;
 
-public class Pet {
+public class Pet extends EntidadeDominio{
 	private Integer id;
 	private String nome;
 	private String especie;

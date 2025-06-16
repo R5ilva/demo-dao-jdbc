@@ -3,16 +3,16 @@ package model.builder;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import model.entities.Consulta;
-import model.entities.Pet;
-import model.entities.Veterinario;
+import model.entity.Consulta;
+import model.entity.Pet;
+import model.entity.Veterinario;
 
 public class ConsultaBuilder implements IConsultaBuilder{
 	
 	private Consulta consulta = new Consulta();
 	
 	@Override
-	public void buildId(int id) {
+	public void buildId(Integer id) {
 		consulta.setId(id);
 		
 	}

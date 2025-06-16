@@ -1,8 +1,8 @@
-package model.entities;
+package model.entity;
 
 import java.util.Objects;
 
-public class Medicamento {
+public class Medicamento extends EntidadeDominio {
 	private Integer id;
 	private String nome;
 	

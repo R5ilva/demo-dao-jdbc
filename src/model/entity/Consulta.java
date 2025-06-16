@@ -1,10 +1,10 @@
-package model.entities;
+package model.entity;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Objects;
 
-public class Consulta {
+public class Consulta extends EntidadeDominio {
 	private Integer id;
 	private LocalDate data;
 	private LocalTime hora;

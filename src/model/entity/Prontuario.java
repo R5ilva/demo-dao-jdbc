@@ -1,8 +1,8 @@
-package model.entities;
+package model.entity;
 
 import java.util.Objects;
 
-public class Prontuario {
+public class Prontuario extends EntidadeDominio {
 	private Integer id;
 	private Consulta consulta;
 	private String observacao;
@@ -39,6 +39,8 @@ public class Prontuario {
 	public void setConsulta(Consulta consulta) {
 		this.consulta = consulta;
 	}
+	
+	
 
 	public String getObservacao() {
 		return observacao;

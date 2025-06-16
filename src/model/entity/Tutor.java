@@ -1,9 +1,9 @@
-package model.entities;
+package model.entity;
 
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Tutor {
+public class Tutor extends EntidadeDominio {
 	
 	private Integer id;
 	private String nome;
