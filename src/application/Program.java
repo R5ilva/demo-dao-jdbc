@@ -2,6 +2,7 @@ package application;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 import model.builder.ConsultaBuilder;
 import model.builder.DiretorConsulta;
@@ -9,7 +10,6 @@ import model.builder.DiretorProntuario;
 import model.builder.ProntuarioBuilder;
 import model.dao.DaoFactory;
 import model.dao.IDao;
-import model.dao.TutorDaoJDBC;
 import model.entity.Consulta;
 import model.entity.EntidadeDominio;
 import model.entity.Medicacao;
@@ -53,8 +53,17 @@ public class Program {
 		IDao tutorDao = DaoFactory.createTutorDao();
 		EntidadeDominio tutor =  tutorDao.findById(2);
 		
-		System.out.println(tutor);
-
+		System.out.println("\n === Teste findAll ====");
+		
+		List<EntidadeDominio> list = tutorDao.findAll();
+		for (EntidadeDominio tut:list) {
+			System.out.println(tut);
+		}
+		
+		//System.out.println(tutor);
+		Tutor tu = new Tutor(null,"Rafael","1234657878",LocalDate.of(1989, 11, 8));
+		tutorDao.insert(tu);
+		System.out.println("Inserted! New id ="+ tu.getId());
 	}
 
 }
