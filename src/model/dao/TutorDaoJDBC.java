@@ -64,14 +64,50 @@ public class TutorDaoJDBC implements IDao {
 
 	@Override
 	public void update(EntidadeDominio obj) {
-		// TODO Auto-generated method stub
+		PreparedStatement st = null;
+		try {
+			Tutor tutor = (Tutor)obj;
+			
+			st = conn.prepareStatement("update tutor "
+					+ "set Nome = ?, CPF = ?, Nascimento = ? "
+					+ "where Id = ? ",
+					Statement.RETURN_GENERATED_KEYS);
+			
+			
+			st.setString(1,tutor.getNome());
+			st.setString(2,tutor.getCpf());
+			java.sql.Date dataSql = java.sql.Date.valueOf(tutor.getDataNascimento());
+			st.setDate(3, dataSql);
+			st.setInt(4, tutor.getId());
+			
+			st.executeUpdate();
+			
+		}
+		catch(SQLException e) {
+			throw new DbException(e.getMessage());
+		}
+		finally {
+			DB.closeStatement(st);
+		}
 
 	}
 
 	@Override
 	public void deleteById(Integer id) {
-		// TODO Auto-generated method stub
-
+		PreparedStatement  st = null;
+		try {
+			st = conn.prepareStatement("DELETE FROM tutor WHERE Id = ?");
+			
+			st.setInt(1, id);
+			
+			st.executeUpdate();
+		}
+		catch(SQLException e) {
+			throw new DbException(e.getMessage());
+		}
+		finally {
+			DB.closeStatement(st);
+		}
 	}
 
 	@Override

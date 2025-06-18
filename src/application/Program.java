@@ -3,6 +3,7 @@ package application;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Scanner;
 
 import model.builder.ConsultaBuilder;
 import model.builder.DiretorConsulta;
@@ -10,6 +11,7 @@ import model.builder.DiretorProntuario;
 import model.builder.ProntuarioBuilder;
 import model.dao.DaoFactory;
 import model.dao.IDao;
+import model.dao.TutorDaoJDBC;
 import model.entity.Consulta;
 import model.entity.EntidadeDominio;
 import model.entity.Medicacao;
@@ -22,6 +24,8 @@ import model.entity.Veterinario;
 public class Program {
 
 	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
 		Tutor obj = new Tutor(1, "Rafael", "233.063.938-43",LocalDate.of(1995, 6, 25));
 		
 		Pet pet = new Pet(2, "Preto","Gato","Macho",1,obj);
@@ -60,10 +64,21 @@ public class Program {
 			System.out.println(tut);
 		}
 		
-		//System.out.println(tutor);
+		/*System.out.println(tutor);
 		Tutor tu = new Tutor(null,"Rafael","1234657878",LocalDate.of(1989, 11, 8));
 		tutorDao.insert(tu);
-		System.out.println("Inserted! New id ="+ tu.getId());
+		System.out.println("Inserted! New id ="+ tu.getId());*/
+		
+		/*tutor = tutorDao.findById(6);
+		((Tutor) tutor).setNome("Roberto");
+		tutorDao.update(tutor);
+		System.out.println("Update completed");*/
+		
+		System.out.println("Informe o id do tutor");
+		int id = sc.nextInt();
+		tutorDao.deleteById(id);
+		System.out.println("Delete Completo");
+		sc.close();
 	}
 
 }
