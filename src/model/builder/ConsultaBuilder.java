@@ -2,6 +2,7 @@ package model.builder;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Objects;
 
 import model.entity.Consulta;
 import model.entity.Pet;
@@ -19,13 +20,18 @@ public class ConsultaBuilder implements IConsultaBuilder{
 	
 	@Override
 	public void buildData(LocalDate data) {
-		consulta.setData(data);
+	    Objects.requireNonNull(data, "Data da consulta não pode ser nula");
+        consulta.setData(data);
+        System.out.println("[BUILDER] Data definida: " + data); // Log adicional
 		
 	}
 
 	@Override
 	public void buildHora(LocalTime time) {
-		consulta.setHora(time);
+		 if(time == null) {
+		        throw new IllegalArgumentException("Horário não pode ser nulo");
+		    }
+		    consulta.setHora(time);
 		
 	}
 

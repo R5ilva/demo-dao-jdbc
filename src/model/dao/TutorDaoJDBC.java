@@ -29,7 +29,7 @@ public class TutorDaoJDBC implements IDao {
 			Tutor tutor = (Tutor)obj;
 			
 			st = conn.prepareStatement("insert into tutor "
-					+ "(Nome, CPF, Nascimento) "
+					+ "(ttr_nome, ttr_cpf,ttr_nascimento) "
 					+ "values "
 					+ "(?, ? , ?)",
 					Statement.RETURN_GENERATED_KEYS);
@@ -50,7 +50,7 @@ public class TutorDaoJDBC implements IDao {
 				DB.closeResultSet(rs);
 			}
 			else {
-				throw new DbException("Erros inesperado! Nenhuma linha foi afetada");
+				throw new DbException("Erro inesperado! Nenhuma linha foi afetada");
 			}
 		}
 		catch(SQLException e) {
@@ -69,8 +69,8 @@ public class TutorDaoJDBC implements IDao {
 			Tutor tutor = (Tutor)obj;
 			
 			st = conn.prepareStatement("update tutor "
-					+ "set Nome = ?, CPF = ?, Nascimento = ? "
-					+ "where Id = ? ",
+					+ "set ttr_nome = ?, ttr_cpf = ?, ttr_nascimento = ? "
+					+ "where ttr_id = ? ",
 					Statement.RETURN_GENERATED_KEYS);
 			
 			
@@ -96,7 +96,7 @@ public class TutorDaoJDBC implements IDao {
 	public void deleteById(Integer id) {
 		PreparedStatement  st = null;
 		try {
-			st = conn.prepareStatement("DELETE FROM tutor WHERE Id = ?");
+			st = conn.prepareStatement("DELETE FROM tutor WHERE ttr_id = ?");
 			
 			st.setInt(1, id);
 			
@@ -115,7 +115,7 @@ public class TutorDaoJDBC implements IDao {
 		PreparedStatement st = null;
 		ResultSet rs = null;
 		try {
-			st = conn.prepareStatement("Select tutor.* from tutor where tutor.id = ?");
+			st = conn.prepareStatement("Select tutor.* from tutor where ttr_id = ?");
 			st.setInt(1, id);
 			rs = st.executeQuery();
 			if (rs.next()) {
@@ -133,10 +133,10 @@ public class TutorDaoJDBC implements IDao {
 
 	private Tutor instanciaTutor(ResultSet rs) throws SQLException {
 		Tutor tutor = new Tutor();
-		tutor.setId(rs.getInt("Id"));
-		tutor.setNome(rs.getString("Nome"));
-		tutor.setCpf(rs.getString("CPF"));
-		java.sql.Date dataSql = rs.getDate("Nascimento");
+		tutor.setId(rs.getInt("ttr_id"));
+		tutor.setNome(rs.getString("ttr_nome"));
+		tutor.setCpf(rs.getString("ttr_cpf"));
+		java.sql.Date dataSql = rs.getDate("ttr_nascimento");
 		LocalDate dataNascimento = dataSql != null ? dataSql.toLocalDate() : null;
 		tutor.setDataNascimento(dataNascimento);
 		return tutor;
@@ -147,7 +147,7 @@ public class TutorDaoJDBC implements IDao {
 		PreparedStatement st = null;
 		ResultSet rs = null;
 		try {
-			st = conn.prepareStatement("Select tutor.* from tutor order by Nome");
+			st = conn.prepareStatement("Select tutor.* from tutor order by ttr_nome");
 			
 			rs = st.executeQuery();
 			

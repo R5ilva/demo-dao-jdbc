@@ -9,20 +9,21 @@ public class Consulta extends EntidadeDominio {
 	private LocalDate data;
 	private LocalTime hora;
 	private String diagnostico;
-	
-	private Pet pet;
-	private Veterinario veterionario;
-	
-	public Consulta() {}
 
-	public Consulta(Integer id, LocalDate data, LocalTime hora, String diagnostico, Pet pet, Veterinario veterionario) {
+	private Pet pet;
+	private Veterinario veterinario;
+
+	public Consulta() {
+	}
+
+	public Consulta(Integer id, LocalDate data, LocalTime hora, String diagnostico, Pet pet, Veterinario veterinario) {
 		super();
-		this.id = id;
+		this.setId(id);
 		this.data = data;
 		this.hora = hora;
 		this.diagnostico = diagnostico;
 		this.pet = pet;
-		this.veterionario = veterionario;
+		this.veterinario = veterinario;
 	}
 
 	public Integer getId() {
@@ -37,9 +38,9 @@ public class Consulta extends EntidadeDominio {
 		return data;
 	}
 
-	public void setData(LocalDate data) {
-		this.data = data;
-	}
+	 public void setData(LocalDate data) {
+	        this.data = Objects.requireNonNull(data, "Data não pode ser nula");
+	    }
 
 	public LocalTime getHora() {
 		return hora;
@@ -66,11 +67,11 @@ public class Consulta extends EntidadeDominio {
 	}
 
 	public Veterinario getVeterionario() {
-		return veterionario;
+		return veterinario;
 	}
 
 	public void setVeterionario(Veterinario veterionario) {
-		this.veterionario = veterionario;
+		this.veterinario = veterionario;
 	}
 
 	@Override
@@ -93,6 +94,6 @@ public class Consulta extends EntidadeDominio {
 	@Override
 	public String toString() {
 		return "Consulta [id=" + id + ", data=" + data + ", hora=" + hora + ", diagnostico=" + diagnostico + ", pet="
-				+ pet + ", veterionario=" + veterionario + "]";
+				+ pet + ", veterionario=" + veterinario + "]";
 	}
 }

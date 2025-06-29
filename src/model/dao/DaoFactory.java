@@ -4,7 +4,7 @@ import db.DB;
 
 public class DaoFactory {
 	public static IDao createPetDao() {
-		return new PetDaoJDBC();
+		return new PetDaoJDBC(DB.getConnection());
 	}
 	
 	public static IDao createTutorDao() {
@@ -12,23 +12,23 @@ public class DaoFactory {
 	}
 	
 	public static IDao createVeterinarioDao() {
-		return new VeterinarioDaoJDBC();
+		return new VeterinarioDaoJDBC(DB.getConnection());
 	}
 	
 	public static IDao createConsultaDao() {
-		return new ConsultaDaoJDBC();
+		return new ConsultaDaoJDBC(DB.getConnection());
 	}
 	
 	public static IDao createMedicamentoDao() {
-		return new MedicamentoDaoJDBC();
+		return new MedicamentoDaoJDBC(DB.getConnection());
 	}
 	
 	public static IDao createMedicacaoDao() {
-		return new MedicacaoDaoJDBC();
+		return new MedicacaoDaoJDBC(DB.getConnection());
 	}
 	
 	public static IDao createProntuarioDao() {
-		return new ProntuarioDaoJDBC();
+		return new ProntuarioDaoJDBC(DB.getConnection());
 	}
 	
 }
